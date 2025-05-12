@@ -90,6 +90,13 @@ const NavLinks = ({ isActive, onClick, handleRandomFind }: NavLinksProps) => {
         Time Machine
       </Link>
       <Link 
+        to="/serendipity" 
+        className={`transition-colors duration-200 hover:text-accent ${isActive('/serendipity') ? 'text-accent' : ''}`} 
+        onClick={onClick}
+      >
+        Serendipity
+      </Link>
+      <Link 
         to="/directors-cut" 
         className={`transition-colors duration-200 hover:text-accent ${isActive('/directors-cut') ? 'text-accent' : ''}`} 
         onClick={onClick}

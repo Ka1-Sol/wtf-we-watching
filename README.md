@@ -1,151 +1,52 @@
 # WTF We Watching?
 
-Una web application per fornire consigli personalizzati su film e serie TV.
-
-## Struttura del Progetto
-
-Il progetto è organizzato con la seguente struttura:
-
-```
-wtf-we-watching/
-├── frontend/          # Applicazione React
-│   ├── public/        # File statici
-│   ├── src/           # Codice sorgente React
-│   │   ├── components/# Componenti React
-│   │   ├── pages/     # Pagine dell'applicazione
-│   │   ├── services/  # Servizi (API, ecc.)
-│   │   ├── store/     # Redux store
-│   │   └── ...
-│   ├── package.json   # Dipendenze frontend
-│   └── ...
-└── package.json       # Script e configurazione principale
-```
+Un'applicazione web per scoprire film e serie TV personalizzate in base ai tuoi gusti.
 
 ## Funzionalità
 
-- **Mood Compass**: Trova contenuti che si adattano al tuo umore attuale
-- **Time Machine**: Esplora contenuti da diverse epoche
-- **Director's Cut**: Naviga attraverso il lavoro dei registi
-- **Decision Timer**: Combatte la paralisi della scelta
-- **Library**: Contenuti salvati e cronologia di visualizzazione
+- **Mood Compass**: Trova contenuti che corrispondono al tuo stato d'animo attuale
+- **Time Machine**: Esplora i migliori contenuti di diverse epoche e decenni
+- **Serendipity Engine**: Lasciati sorprendere da contenuti inaspettati che potresti amare
+- **Director's Cut**: Naviga attraverso l'opera di un regista con ordine di visione personalizzato
+- **Decision Timer**: Combatti la paralisi da scelta con supporto decisionale guidato
+- **Library**: Tieni traccia di ciò che hai guardato e vuoi guardare
 
-## Tecnologie Utilizzate
+## Tecnologie
 
-- React
-- TypeScript
-- Redux
-- Tailwind CSS
-- TMDb API
+- **Frontend**: React 19.1.0, React Router 7.6.0, Redux Toolkit, Tailwind CSS
+- **Backend**: Express, Node.js con TypeScript
+- **API**: TMDb per dati su film e serie TV
 
-## Come iniziare
+## Installazione
 
-1. Clona il repository
-2. Installa le dipendenze:
-   ```
-   npm install
-   ```
-3. Avvia l'applicazione:
-   ```
-   npm start
-   ```
+```bash
+# Clona il repository
+git clone https://github.com/yourusername/wtf-we-watching.git
+cd wtf-we-watching
 
-## Sviluppo
+# Installa le dipendenze
+npm install
 
-Per lavorare sul frontend:
-```
-npm run frontend:dev
+# Avvia in modalità sviluppo
+npm run dev
 ```
 
-Per costruire il frontend:
-```
-npm run frontend:build
-```
+## Configurazione
 
-## Features
-
-- **Advanced User Profiling**: Personalized recommendations based on your specific tastes and preferences
-- **Mood Compass**: Find content that matches your current mood with an interactive visual interface
-- **Serendipity Engine**: Discover unexpected content that you might love
-- **Time Machine**: Explore content from different eras with contextual recommendations
-- **Director's Cut**: Navigate through a filmmaker's work with personalized viewing order
-- **Decision Timer**: Combat choice paralysis with guided decision support
-
-## Technology Stack
-
-- **React** with TypeScript for UI development
-- **Redux Toolkit** for state management
-- **React Router** for navigation
-- **Tailwind CSS** for styling
-- **Framer Motion** for animations
-- **TMDb API** for content data
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16.x or higher
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/wtf-we-watching.git
-   cd wtf-we-watching
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
-
-3. Add your TMDb API key:
-   - Sign up for an API key at [TMDb](https://www.themoviedb.org/documentation/api)
-   - Open `src/services/api.ts` and replace `YOUR_TMDB_API_KEY` with your actual API key
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-5. Open your browser to `http://localhost:5173`
-
-## Project Structure
+Crea un file `.env` nella cartella backend con le seguenti variabili:
 
 ```
-src/
-├── assets/          # Static assets
-├── components/      # React components
-│   ├── features/    # Feature-specific components
-│   ├── layout/      # Layout components
-│   └── ui/          # Reusable UI components
-├── context/         # React context providers
-├── hooks/           # Custom React hooks
-├── pages/           # Page components
-├── services/        # API services
-├── store/           # Redux store
-│   └── slices/      # Redux slices
-├── types/           # TypeScript type definitions
-└── utils/           # Utility functions
+PORT=5001
+CORS_ORIGIN=http://localhost:5173
+TMDB_API_KEY=your_tmdb_api_key_here
+TMDB_API_URL=https://api.themoviedb.org/3
+NODE_ENV=development
 ```
 
-## Contributing
+## Deployment
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+Il progetto è configurato per il deployment su Vercel. Collega semplicemente il repository GitHub a Vercel e configura le variabili d'ambiente necessarie.
 
-## License
+## Licenza
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgements
-
-- [TMDb API](https://www.themoviedb.org/documentation/api) for providing movie and TV show data
-- All contributors who have helped shape and improve this project
+MIT

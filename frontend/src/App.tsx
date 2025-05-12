@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Layout from './components/layout/Layout';
 import api from './services/api';
 
 function App() {
@@ -47,7 +49,11 @@ function App() {
     );
   }
 
-  return null; // App component is not used directly anymore
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }
 
 export default App;
