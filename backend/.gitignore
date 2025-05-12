@@ -1,0 +1,30 @@
+# Dipendenze
+node_modules/
+
+# Ambiente
+.env
+
+# Build
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+
+# File di sistema
+.DS_Store
+Thumbs.db
+
+# File editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dati utente
+data/*.json 

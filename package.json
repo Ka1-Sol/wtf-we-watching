@@ -1,0 +1,27 @@
+{
+  "name": "wtf-we-watching",
+  "version": "1.0.0",
+  "description": "A web application for personalized movie and TV show recommendations",
+  "scripts": {
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:preview": "cd frontend && npm run preview",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:build": "cd backend && npm run build",
+    "backend:start": "cd backend && npm start",
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "build": "npm run frontend:build && npm run backend:build",
+    "start": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\""
+  },
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "type": "module",
+  "main": "dist/index.js"
+} 
