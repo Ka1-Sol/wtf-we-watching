@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm install && cd frontend && npm install --platform=linux --arch=x64 && npm run build",
+  "buildCommand": "ls -la && pwd && git log -n 1 && git ls-tree --name-only HEAD && npm install",
   "outputDirectory": "frontend/dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" }
