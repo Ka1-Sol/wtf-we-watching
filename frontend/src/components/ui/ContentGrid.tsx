@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Content } from '../../store/slices/contentSlice';
 import ContentCard from './ContentCard';
 
@@ -8,6 +9,8 @@ interface ContentGridProps {
   emptyMessage?: string;
   columns?: number;
   variant?: 'default' | 'featured' | 'compact';
+  initialLimit?: number;
+  incrementAmount?: number;
 }
 
 const ContentGrid = ({
@@ -17,7 +20,21 @@ const ContentGrid = ({
   emptyMessage = 'No content found',
   columns = 4,
   variant = 'default',
+  initialLimit = 12,
+  incrementAmount = 6,
 }: ContentGridProps) => {
+  // State per il numero di contenuti da mostrare
+  const [visibleCount, setVisibleCount] = useState(initialLimit);
+
+  // Funzione per caricare più contenuti
+  const handleLoadMore = () => {
+    setVisibleCount(prevCount => prevCount + incrementAmount);
+  };
+
+  // Filtra i contenuti in base al limite attuale
+  const visibleContents = contents.slice(0, visibleCount);
+  const hasMoreToLoad = contents.length > visibleCount;
+
   // Generate skeleton cards for loading state
   const skeletonCards = Array(8).fill(0).map((_, index) => (
     <ContentCard key={`skeleton-${index}`} content={{
@@ -53,14 +70,27 @@ const ContentGrid = ({
           <p className="text-gray-500">{emptyMessage}</p>
         </div>
       ) : (
-        <div className={`grid ${getGridClass()} gap-4 md:gap-6`}>
-          {isLoading 
-            ? skeletonCards 
-            : contents.map(content => (
-                <ContentCard key={content.id} content={content} variant={variant} />
-              ))
-          }
-        </div>
+        <>
+          <div className={`grid ${getGridClass()} gap-4 md:gap-6`}>
+            {isLoading 
+              ? skeletonCards 
+              : visibleContents.map(content => (
+                  <ContentCard key={content.id} content={content} variant={variant} />
+                ))
+            }
+          </div>
+          
+          {hasMoreToLoad && !isLoading && (
+            <div className="mt-8 text-center">
+              <button 
+                onClick={handleLoadMore} 
+                className="px-6 py-3 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition-colors text-base font-medium"
+              >
+                Show more
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

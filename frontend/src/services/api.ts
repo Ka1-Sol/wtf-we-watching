@@ -109,7 +109,7 @@ export const discoverContent = async (params: Record<string, string | number | b
       page: params.page || 1,
       include_adult: false,
       // Limita il numero di risultati per pagina
-      per_page: 10
+      per_page: 20
     };
     
     // Imposta un timeout più breve per la richiesta per evitare blocchi dell'interfaccia
@@ -134,8 +134,8 @@ export const discoverContent = async (params: Record<string, string | number | b
         return [];
       }
       
-      // Limita il numero di risultati convertiti per motivi di prestazioni - massimo 6
-      return response.data.results.slice(0, 6).map(convertMovieToContent);
+      // Limita il numero di risultati convertiti per motivi di prestazioni - massimo 20
+      return response.data.results.slice(0, 20).map(convertMovieToContent);
     } catch (error: unknown) {
       clearTimeout(timeoutId);
       
@@ -202,6 +202,7 @@ export const getRecommendedContent = async (
         sort_by: 'popularity.desc',
         with_genres: genres.join(','),
         page: 1,
+        per_page: 20,
       },
     });
     

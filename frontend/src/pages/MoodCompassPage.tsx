@@ -161,6 +161,7 @@ const MoodCompassPage = () => {
         
         // Limit to first page with lower number of results to avoid performance issues
         params.page = 1;
+        params.per_page = 20;
         
         // Execute the API call with a timeout to prevent hanging
         const timeoutPromise = new Promise<Content[]>((_, reject) => {
@@ -179,7 +180,7 @@ const MoodCompassPage = () => {
             setContents([]);
           } else {
             // Limit number of results to improve performance
-            setContents(results.slice(0, 6));
+            setContents(results.slice(0, 12));
           }
           setIsLoading(false);
         }
@@ -248,18 +249,23 @@ const MoodCompassPage = () => {
           <div className="mt-12">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-indigo-600">Content for your mood</h2>
-              <Link 
-                to="/discover"
-                className="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-              >
-                Explore more →
-              </Link>
             </div>
             <ContentGrid
               contents={contents}
               isLoading={isLoading}
               emptyMessage="Adjust the compass to discover new content"
+              initialLimit={6}
+              incrementAmount={6}
+              columns={3}
             />
+            <div className="mt-6 text-center">
+              <Link 
+                to="/discover"
+                className="text-indigo-600 hover:text-indigo-800 text-sm font-medium inline-block"
+              >
+                View all in Discover →
+              </Link>
+            </div>
           </div>
         )}
         

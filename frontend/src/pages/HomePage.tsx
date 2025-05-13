@@ -140,7 +140,7 @@ const HomePage = () => {
           {/* Trending grid */}
           {trendingContent.length > 0 && (
             <ContentGrid 
-              contents={trendingContent.slice(0, 6)}
+              contents={trendingContent.slice(0, 12)}
               isLoading={isLoading && trendingContent.length === 0}
             />
           )}
@@ -159,7 +159,7 @@ const HomePage = () => {
           <div className="container-custom">
             <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center">Recommended For You</h2>
             <ContentGrid 
-              contents={recommendations.slice(0, 6)}
+              contents={recommendations.slice(0, 12)}
               isLoading={isLoading && recommendations.length === 0} 
             />
             <div className="mt-10 text-center">

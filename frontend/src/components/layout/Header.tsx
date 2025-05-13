@@ -20,10 +20,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary text-white py-4 md:py-6 px-6 sticky top-0 z-50 shadow-md">
+    <header className="bg-primary text-white py-3 md:py-4 px-4 md:px-6 sticky top-0 z-50 shadow-md">
       <div className="container-custom flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
+          <Link to="/" className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
             WTF <span className="text-accent">We Watching?</span>
           </Link>
         </div>
@@ -40,10 +40,10 @@ const Header = () => {
         </button>
         
         {/* Desktop menu */}
-        <nav className="hidden lg:flex space-x-8 items-center">
+        <nav className="hidden lg:flex space-x-6 items-center">
           <Link 
             to="/" 
-            className={`transition-colors duration-200 hover:text-accent text-lg xl:text-xl ${isActive('/') ? 'text-accent' : ''}`}
+            className={`transition-colors duration-200 hover:text-accent text-base xl:text-lg ${isActive('/') ? 'text-accent' : ''}`}
           >
             Home
           </Link>
@@ -52,14 +52,14 @@ const Header = () => {
           <div className="relative">
             <button 
               onClick={toggleDiscoverMenu}
-              className={`flex items-center transition-colors duration-200 hover:text-accent text-lg xl:text-xl ${
+              className={`flex items-center transition-colors duration-200 hover:text-accent text-base xl:text-lg ${
                 ['/discover', '/mood-compass', '/time-machine', '/serendipity', '/directors-cut'].some(path => isActive(path)) 
                   ? 'text-accent' 
                   : ''
               }`}
             >
               Discover
-              <svg xmlns="http://www.w3.org/2000/svg" className={`ml-1 h-5 w-5 transition-transform ${isDiscoverMenuOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className={`ml-1 h-4 w-4 transition-transform ${isDiscoverMenuOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </button>
@@ -107,24 +107,17 @@ const Header = () => {
           
           <Link 
             to="/decision-timer" 
-            className={`transition-colors duration-200 hover:text-accent text-lg xl:text-xl ${isActive('/decision-timer') ? 'text-accent' : ''}`}
+            className={`transition-colors duration-200 hover:text-accent text-base xl:text-lg ${isActive('/decision-timer') ? 'text-accent' : ''}`}
           >
             Decision Timer
           </Link>
           
           <Link 
             to="/library" 
-            className={`transition-colors duration-200 hover:text-accent text-lg xl:text-xl ${isActive('/library') ? 'text-accent' : ''}`}
+            className={`transition-colors duration-200 hover:text-accent text-base xl:text-lg ${isActive('/library') ? 'text-accent' : ''}`}
           >
             My Library
           </Link>
-          
-          <button 
-            className="btn btn-primary cursor-pointer text-lg px-6 py-3"
-            onClick={handleRandomFind}
-          >
-            Find Something Now
-          </button>
         </nav>
       </div>
       
@@ -205,16 +198,6 @@ const MobileNavLinks = ({ isActive, onClick, handleRandomFind }: NavLinksProps) 
       >
         My Library
       </Link>
-      <button 
-        className="btn btn-primary cursor-pointer text-base md:text-lg px-4 md:px-6 py-2 md:py-3"
-        onClick={(e) => {
-          e.preventDefault();
-          if (onClick) onClick();
-          handleRandomFind();
-        }}
-      >
-        Find Something Now
-      </button>
     </>
   );
 };
