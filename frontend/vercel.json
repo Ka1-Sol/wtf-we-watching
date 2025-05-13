@@ -1,5 +1,17 @@
 {
   "framework": "vite",
+  "buildCommand": "npm install --platform=linux --arch=x64 && npm run build",
+  "installCommand": "npm install --platform=linux --arch=x64",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ],
   "rewrites": [
     { 
       "source": "/api/:path*", 
