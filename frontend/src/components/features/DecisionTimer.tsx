@@ -35,12 +35,12 @@ const DecisionTimer = ({ onDecisionMade, preferredGenres = [] }: DecisionTimerPr
     setIsPaused(prev => !prev);
   };
   
-  // Fetch content options
+  // Fetch options for the decision timer
   const fetchOptions = useCallback(async () => {
     setIsLoading(true);
     
     try {
-      const params: Record<string, any> = {
+      const params: Record<string, string | number | boolean> = {
         sort_by: 'popularity.desc',
       };
       

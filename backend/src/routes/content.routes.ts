@@ -11,35 +11,35 @@ const router = Router();
 
 /**
  * @route   GET /api/content/recommended
- * @desc    Ottiene contenuti raccomandati in base alle preferenze dell'utente
+ * @desc    Get recommended content based on user preferences
  * @access  Public
  */
 router.get('/recommended', getRecommendedContent);
 
 /**
  * @route   GET /api/content/mood
- * @desc    Ottiene contenuti in base all'umore
+ * @desc    Get content based on mood
  * @access  Public
  */
 router.get('/mood', getMoodBasedContent);
 
 /**
  * @route   GET /api/content/time
- * @desc    Ottiene contenuti in base all'epoca
+ * @desc    Get content based on time period
  * @access  Public
  */
 router.get('/time', getTimeBasedContent);
 
 /**
  * @route   GET /api/content/director/:id
- * @desc    Ottiene contenuti di un regista specifico
+ * @desc    Get content from a specific director
  * @access  Public
  */
 router.get('/director/:id', getDirectorContent);
 
 /**
  * @route   GET /api/content/random
- * @desc    Ottiene una raccomandazione casuale
+ * @desc    Get a random recommendation
  * @access  Public
  */
 router.get('/random', getRandomRecommendation);

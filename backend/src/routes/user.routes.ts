@@ -12,42 +12,42 @@ const router = Router();
 
 /**
  * @route   GET /api/users/preferences
- * @desc    Ottiene le preferenze dell'utente
+ * @desc    Get user preferences
  * @access  Public
  */
 router.get('/preferences', getUserPreferences);
 
 /**
  * @route   PUT /api/users/preferences
- * @desc    Aggiorna le preferenze dell'utente
+ * @desc    Update user preferences
  * @access  Public
  */
 router.put('/preferences', updateUserPreferences);
 
 /**
  * @route   POST /api/users/watched
- * @desc    Aggiunge un contenuto alla lista dei guardati
+ * @desc    Add content to watched list
  * @access  Public
  */
 router.post('/watched', addWatchedContent);
 
 /**
  * @route   POST /api/users/saved
- * @desc    Aggiunge un contenuto alla lista dei salvati
+ * @desc    Add content to saved list
  * @access  Public
  */
 router.post('/saved', addSavedContent);
 
 /**
  * @route   DELETE /api/users/saved/:id
- * @desc    Rimuove un contenuto dalla lista dei salvati
+ * @desc    Remove content from saved list
  * @access  Public
  */
 router.delete('/saved/:id', removeSavedContent);
 
 /**
  * @route   POST /api/users/rate
- * @desc    Valuta un contenuto
+ * @desc    Rate content
  * @access  Public
  */
 router.post('/rate', rateContent);

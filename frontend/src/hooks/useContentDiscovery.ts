@@ -20,7 +20,7 @@ const useContentDiscovery = (options: UseContentDiscoveryOptions = {}) => {
   const preferences = user.preferences;
   
   // Discover content based on parameters
-  const discover = useCallback(async (params: Record<string, any> = {}) => {
+  const discover = useCallback(async (params: Record<string, string | number | boolean> = {}) => {
     try {
       setIsLoading(true);
       setError(null);
@@ -36,7 +36,8 @@ const useContentDiscovery = (options: UseContentDiscoveryOptions = {}) => {
       dispatch(setDiscoveryContent(results));
       
       return results;
-    } catch (err) {
+    } catch (error) {
+      console.error('Error discovering content:', error);
       setError('Failed to discover content. Please try again.');
       return [];
     } finally {
@@ -58,7 +59,8 @@ const useContentDiscovery = (options: UseContentDiscoveryOptions = {}) => {
       }
       
       return results;
-    } catch (err) {
+    } catch (error) {
+      console.error('Error searching content:', error);
       setError('Failed to search content. Please try again.');
       return [];
     } finally {
@@ -75,10 +77,11 @@ const useContentDiscovery = (options: UseContentDiscoveryOptions = {}) => {
       // Extract genre IDs from user preferences
       const genreIds = preferences.genres.map((genre: Genre) => genre.id);
       
-      let results = await getRecommendedContent(genreIds, filterWatched ? watchedContent : []);
+      const results = await getRecommendedContent(genreIds, filterWatched ? watchedContent : []);
       
       return results;
-    } catch (err) {
+    } catch (error) {
+      console.error('Error getting recommendations:', error);
       setError('Failed to get recommendations. Please try again.');
       return [];
     } finally {
@@ -116,7 +119,8 @@ const useContentDiscovery = (options: UseContentDiscoveryOptions = {}) => {
       }));
       
       return contentsWithMood;
-    } catch (err) {
+    } catch (error) {
+      console.error('Error getting content by mood:', error);
       setError('Failed to get content by mood. Please try again.');
       return [];
     } finally {

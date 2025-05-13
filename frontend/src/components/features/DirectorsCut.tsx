@@ -38,7 +38,7 @@ const DirectorsCut = ({ initialDirectorId }: DirectorsCutProps) => {
     const query = e.target.value;
     setSearchQuery(query);
     
-    if (query.trim().length < 3) {
+    if (!query.trim()) {
       setSearchResults([]);
       return;
     }
@@ -46,7 +46,7 @@ const DirectorsCut = ({ initialDirectorId }: DirectorsCutProps) => {
     try {
       // In a real app, you would have a specific endpoint for searching directors
       // Here we're simulating that with a basic search and filtering approach
-      const results = await searchContent(query);
+      await searchContent(query);
       
       // Filter to find potential directors (this is a simplified approach)
       // In a real app, you'd have better data to identify directors

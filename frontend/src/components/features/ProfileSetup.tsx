@@ -111,16 +111,16 @@ const ProfileSetup = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full max-w-full sm:max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       {/* Progress bar */}
-      <div className="w-full h-1 bg-gray-200">
+      <div className="w-full h-2 bg-gray-100">
         <div 
           className="h-full bg-secondary transition-all duration-500"
           style={{ width: `${((currentStep + 1) / (Object.keys(SetupStep).length / 2)) * 100}%` }}
         ></div>
       </div>
       
-      <div className="p-6 md:p-8">
+      <div className="p-6 md:p-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
@@ -163,14 +163,14 @@ const ProfileSetup = () => {
         <div className="mt-8 flex justify-between">
           <button
             onClick={handlePrevStep}
-            className={`btn btn-secondary ${currentStep === SetupStep.WELCOME ? 'invisible' : ''}`}
+            className={`btn btn-secondary text-lg px-6 py-3 ${currentStep === SetupStep.WELCOME ? 'invisible' : ''}`}
           >
             Back
           </button>
           
           <button
             onClick={handleNextStep}
-            className="btn btn-primary"
+            className="btn btn-primary text-lg px-8 py-3"
           >
             {currentStep === SetupStep.COMPLETE ? 'Finish' : 'Next'}
           </button>
@@ -181,41 +181,25 @@ const ProfileSetup = () => {
 };
 
 const WelcomeStep = () => (
-  <div className="text-center py-12">
-    <h2 className="text-3xl font-bold mb-6">Welcome to WTF We Watching?</h2>
-    <p className="text-lg text-gray-600 mb-8">
+  <div className="text-center py-8">
+    <h2 className="text-3xl md:text-4xl font-bold mb-6">Welcome to WTF We Watching?</h2>
+    <p className="text-xl md:text-2xl text-gray-600 mb-6">
       Let's help you discover movies and shows you'll actually love.
     </p>
-    <p className="text-gray-600 mb-4">
-      We'll ask you a few questions to understand your taste and preferences.
-      This will help us recommend content that's right for you.
-    </p>
-    <div className="mt-8 flex justify-center space-x-6">
-      <div className="text-center">
-        <div className="w-16 h-16 mx-auto rounded-full bg-secondary/20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-          </svg>
-        </div>
-        <p className="mt-2 text-sm font-medium">Pick Genres</p>
-      </div>
-      <div className="text-center">
-        <div className="w-16 h-16 mx-auto rounded-full bg-secondary/20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        </div>
-        <p className="mt-2 text-sm font-medium">Select Creators</p>
-      </div>
-      <div className="text-center">
-        <div className="w-16 h-16 mx-auto rounded-full bg-secondary/20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <p className="mt-2 text-sm font-medium">Start Watching</p>
-      </div>
+    <div className="max-w-2xl mx-auto bg-blue-50 rounded-lg p-6 text-left mb-6">
+      <p className="text-lg md:text-xl text-gray-700 mb-3">
+        We'll ask you to select your favorite:
+      </p>
+      <ul className="mt-2 space-y-4">
+        <li className="flex items-center gap-3">
+          <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-medium">1</span>
+          <span className="text-lg">Movie genres you enjoy</span>
+        </li>
+        <li className="flex items-center gap-3">
+          <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-medium">2</span>
+          <span className="text-lg">Directors and creators you follow</span>
+        </li>
+      </ul>
     </div>
   </div>
 );
@@ -228,27 +212,32 @@ interface GenresStepProps {
 
 const GenresStep = ({ genres, selectedGenres, onToggle }: GenresStepProps) => (
   <div>
-    <h2 className="text-2xl font-bold mb-6">What genres do you enjoy?</h2>
-    <p className="text-gray-600 mb-6">
-      Select all that apply. This helps us understand what type of content you prefer.
+    <h2 className="text-3xl font-bold mb-4 text-center">What genres do you enjoy?</h2>
+    <p className="text-xl text-gray-600 mb-8 text-center">
+      Select all that apply to get better recommendations.
     </p>
-    <div className="flex flex-wrap gap-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
       {genres.map(genre => (
         <button
           key={genre.id}
           onClick={() => onToggle(genre)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+          className={`px-4 py-3 rounded-lg text-lg font-medium transition-all flex items-center justify-center ${
             selectedGenres.some(g => g.id === genre.id)
               ? 'bg-secondary text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
+          {selectedGenres.some(g => g.id === genre.id) && (
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          )}
           {genre.name}
         </button>
       ))}
     </div>
     {selectedGenres.length > 0 && (
-      <p className="mt-4 text-sm text-gray-500">
+      <p className="mt-6 text-lg text-center text-secondary font-medium">
         {selectedGenres.length} genre{selectedGenres.length !== 1 ? 's' : ''} selected
       </p>
     )}
@@ -263,27 +252,32 @@ interface CreatorsStepProps {
 
 const CreatorsStep = ({ creators, selectedCreators, onToggle }: CreatorsStepProps) => (
   <div>
-    <h2 className="text-2xl font-bold mb-6">Which creators do you like?</h2>
-    <p className="text-gray-600 mb-6">
+    <h2 className="text-3xl font-bold mb-4 text-center">Which creators do you like?</h2>
+    <p className="text-xl text-gray-600 mb-8 text-center">
       Choose directors or showrunners whose work you enjoy.
     </p>
-    <div className="flex flex-wrap gap-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       {creators.map(creator => (
         <button
           key={creator.id}
           onClick={() => onToggle(creator)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+          className={`px-4 py-3 rounded-lg text-lg font-medium transition-all flex items-center ${
             selectedCreators.some(c => c.id === creator.id)
               ? 'bg-secondary text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
+          {selectedCreators.some(c => c.id === creator.id) && (
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          )}
           {creator.name}
         </button>
       ))}
     </div>
     {selectedCreators.length > 0 && (
-      <p className="mt-4 text-sm text-gray-500">
+      <p className="mt-6 text-lg text-center text-secondary font-medium">
         {selectedCreators.length} creator{selectedCreators.length !== 1 ? 's' : ''} selected
       </p>
     )}
@@ -302,37 +296,50 @@ const CompleteStep = ({ selectedGenres, selectedCreators }: CompleteStepProps) =
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
       </svg>
     </div>
-    <h2 className="text-2xl font-bold mb-4">Your profile is ready!</h2>
-    <p className="text-gray-600 mb-6">
-      Based on your preferences, we'll help you discover amazing content.
+    <h2 className="text-3xl font-bold mb-4">You're all set!</h2>
+    <p className="text-xl text-gray-600 mb-8">
+      Based on your preferences, we'll recommend content you'll actually love.
     </p>
-    <div className="mt-6 bg-gray-50 rounded-lg p-4 text-left">
-      <h3 className="font-semibold mb-2">Your selected genres:</h3>
-      <div className="flex flex-wrap gap-1 mb-4">
-        {selectedGenres.length > 0 ? (
-          selectedGenres.map(genre => (
-            <span key={genre.id} className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">
-              {genre.name}
-            </span>
-          ))
-        ) : (
-          <span className="text-gray-500 text-sm">No genres selected</span>
-        )}
-      </div>
+    
+    <div className="max-w-2xl mx-auto mt-6 bg-gray-50 rounded-lg p-6 text-left">
+      <h3 className="text-xl font-medium mb-4 text-gray-700">Your preferences:</h3>
       
-      <h3 className="font-semibold mb-2">Your selected creators:</h3>
-      <div className="flex flex-wrap gap-1">
-        {selectedCreators.length > 0 ? (
-          selectedCreators.map(creator => (
-            <span key={creator.id} className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">
-              {creator.name}
-            </span>
-          ))
-        ) : (
-          <span className="text-gray-500 text-sm">No creators selected</span>
-        )}
-      </div>
+      {(selectedGenres.length > 0 || selectedCreators.length > 0) ? (
+        <>
+          {selectedGenres.length > 0 && (
+            <div className="mb-6">
+              <p className="text-lg font-medium text-gray-500 mb-2">Genres:</p>
+              <div className="flex flex-wrap gap-2">
+                {selectedGenres.map(genre => (
+                  <span key={genre.id} className="bg-gray-200 text-gray-700 px-3 py-2 rounded text-base">
+                    {genre.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {selectedCreators.length > 0 && (
+            <div>
+              <p className="text-lg font-medium text-gray-500 mb-2">Creators:</p>
+              <div className="flex flex-wrap gap-2">
+                {selectedCreators.map(creator => (
+                  <span key={creator.id} className="bg-gray-200 text-gray-700 px-3 py-2 rounded text-base">
+                    {creator.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <p className="text-lg text-gray-500 py-2">No preferences selected. You can update these anytime in your profile settings.</p>
+      )}
     </div>
+    
+    <p className="text-lg text-gray-500 mt-8">
+      Click "Finish" below to start discovering content.
+    </p>
   </div>
 );
 

@@ -11,35 +11,35 @@ const router = Router();
 
 /**
  * @route   GET /api/tmdb/trending
- * @desc    Ottiene contenuti di tendenza
+ * @desc    Get trending content
  * @access  Public
  */
 router.get('/trending', getTrending);
 
 /**
  * @route   GET /api/tmdb/movie/:id
- * @desc    Ottiene dettagli di un film
+ * @desc    Get movie details
  * @access  Public
  */
 router.get('/movie/:id', getMovieDetails);
 
 /**
  * @route   GET /api/tmdb/tv/:id
- * @desc    Ottiene dettagli di una serie TV
+ * @desc    Get TV series details
  * @access  Public
  */
 router.get('/tv/:id', getTvDetails);
 
 /**
  * @route   GET /api/tmdb/search
- * @desc    Cerca film e serie TV
+ * @desc    Search for movies and TV series
  * @access  Public
  */
 router.get('/search', searchContent);
 
 /**
  * @route   GET /api/tmdb/discover
- * @desc    Scopre contenuti in base a vari parametri
+ * @desc    Discover content based on various parameters
  * @access  Public
  */
 router.get('/discover', discoverContent);

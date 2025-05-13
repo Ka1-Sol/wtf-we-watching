@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import DecisionTimer from '../components/features/DecisionTimer';
 import type { RootState } from '../store';
@@ -7,14 +6,13 @@ import type { UserState } from '../store/slices/userSlice';
 
 const DecisionTimerPage = () => {
   const user = useSelector((state: RootState) => state.user) as UserState;
-  const [selectedContent, setSelectedContent] = useState<Content | null>(null);
   
   // Get user's preferred genres for the decision timer
   const preferredGenreIds = user.preferences.genres.map(genre => genre.id);
   
   const handleDecisionMade = (content: Content | null) => {
-    setSelectedContent(content);
-    // In a real app, you might also save this to user history or take other actions
+    // In a real app, you might save this to user history or take other actions
+    console.log('Decision made:', content?.title);
   };
   
   return (

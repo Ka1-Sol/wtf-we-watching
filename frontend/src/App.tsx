@@ -3,6 +3,15 @@ import { Outlet } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import api from './services/api';
 
+interface ApiError {
+  response?: {
+    data?: {
+      status_message?: string;
+    };
+  };
+  message?: string;
+}
+
 function App() {
   const [apiKeyValid, setApiKeyValid] = useState<boolean | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
@@ -19,10 +28,11 @@ function App() {
           setApiKeyValid(false);
           setApiError('Invalid API response');
         }
-      } catch (error: any) {
-        console.error('API key validation error:', error);
+      } catch (error: unknown) {
+        const apiError = error as ApiError;
+        console.error('API key validation error:', apiError);
         setApiKeyValid(false);
-        setApiError(error.response?.data?.status_message || 'Failed to validate API key');
+        setApiError(apiError.response?.data?.status_message || 'Failed to validate API key');
       }
     };
 

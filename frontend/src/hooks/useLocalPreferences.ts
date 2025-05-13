@@ -61,7 +61,7 @@ const useLocalPreferences = () => {
     } else {
       root.classList.toggle('dark', theme === 'dark');
     }
-  }, [preferences.theme, isLoaded]);
+  }, [preferences.theme, isLoaded, preferences]);
 
   // Update a single preference
   const updatePreference = useCallback(<K extends keyof LocalPreferences>(

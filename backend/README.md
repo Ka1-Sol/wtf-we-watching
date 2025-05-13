@@ -1,76 +1,76 @@
 # WTF We Watching Backend
 
-API backend per l'applicazione "WTF We Watching?", che fornisce consigli personalizzati su film e serie TV.
+API backend for the "WTF We Watching?" application, providing personalized recommendations for movies and TV series.
 
-## Tecnologie
+## Technologies
 
 - Node.js
 - Express
 - TypeScript
-- TMDb API per i dati su film e serie TV
+- TMDb API for movie and TV series data
 
-## Struttura
+## Structure
 
 ```
 backend/
-├── src/               # Codice sorgente
-│   ├── controllers/   # Controller per la gestione delle richieste
-│   ├── routes/        # Definizione delle route API
-│   ├── models/        # Definizioni dei modelli dati
-│   ├── services/      # Servizi business logic
-│   ├── middleware/    # Middleware Express
-│   ├── config/        # File di configurazione
-│   └── utils/         # Funzioni di utilità
-├── data/              # File JSON per l'archiviazione dati (no database)
-├── dist/              # Codice compilato (generato)
-└── package.json       # Dipendenze e script
+├── src/               # Source code
+│   ├── controllers/   # Controllers for handling requests
+│   ├── routes/        # API route definitions
+│   ├── models/        # Data model definitions
+│   ├── services/      # Business logic services
+│   ├── middleware/    # Express middleware
+│   ├── config/        # Configuration files
+│   └── utils/         # Utility functions
+├── data/              # JSON files for data storage (no database)
+├── dist/              # Compiled code (generated)
+└── package.json       # Dependencies and scripts
 ```
 
-## Endpoints API
+## API Endpoints
 
 ### TMDb API Proxy
 
-- `GET /api/tmdb/trending` - Ottiene contenuti di tendenza
-- `GET /api/tmdb/movie/:id` - Ottiene dettagli di un film
-- `GET /api/tmdb/tv/:id` - Ottiene dettagli di una serie TV
-- `GET /api/tmdb/search` - Cerca film e serie TV
-- `GET /api/tmdb/discover` - Scopre contenuti in base a vari parametri
+- `GET /api/tmdb/trending` - Get trending content
+- `GET /api/tmdb/movie/:id` - Get movie details
+- `GET /api/tmdb/tv/:id` - Get TV series details
+- `GET /api/tmdb/search` - Search for movies and TV series
+- `GET /api/tmdb/discover` - Discover content based on various parameters
 
-### Gestione Utente
+### User Management
 
-- `GET /api/users/preferences` - Ottiene le preferenze dell'utente
-- `PUT /api/users/preferences` - Aggiorna le preferenze dell'utente
-- `POST /api/users/watched` - Aggiunge un contenuto alla lista dei guardati
-- `POST /api/users/saved` - Aggiunge un contenuto alla lista dei salvati
-- `DELETE /api/users/saved/:id` - Rimuove un contenuto dalla lista dei salvati
-- `POST /api/users/rate` - Valuta un contenuto
+- `GET /api/users/preferences` - Get user preferences
+- `PUT /api/users/preferences` - Update user preferences
+- `POST /api/users/watched` - Add content to watched list
+- `POST /api/users/saved` - Add content to saved list
+- `DELETE /api/users/saved/:id` - Remove content from saved list
+- `POST /api/users/rate` - Rate content
 
-### Contenuti Personalizzati
+### Custom Content
 
-- `GET /api/content/recommended` - Ottiene contenuti raccomandati in base alle preferenze dell'utente
-- `GET /api/content/mood` - Ottiene contenuti in base all'umore
-- `GET /api/content/time` - Ottiene contenuti in base all'epoca
-- `GET /api/content/director/:id` - Ottiene contenuti di un regista specifico
-- `GET /api/content/random` - Ottiene una raccomandazione casuale
+- `GET /api/content/recommended` - Get recommended content based on user preferences
+- `GET /api/content/mood` - Get content based on mood
+- `GET /api/content/time` - Get content based on time period
+- `GET /api/content/director/:id` - Get content from a specific director
+- `GET /api/content/random` - Get a random recommendation
 
-## Sviluppo
+## Development
 
-Per installare le dipendenze:
+To install dependencies:
 ```
 npm install
 ```
 
-Per eseguire in modalità sviluppo:
+To run in development mode:
 ```
 npm run dev
 ```
 
-Per buildare l'applicazione:
+To build the application:
 ```
 npm run build
 ```
 
-Per eseguire la versione buildata:
+To run the built version:
 ```
 npm start
 ``` 
