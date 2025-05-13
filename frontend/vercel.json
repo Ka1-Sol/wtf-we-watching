@@ -1,7 +1,7 @@
 {
-  "framework": "vite",
-  "buildCommand": "npm ci --platform=linux --arch=x64 --no-optional && npm run build:vercel",
-  "installCommand": "npm ci --platform=linux --arch=x64 --no-optional",
+  "framework": null,
+  "installCommand": "npm install --omit=optional --no-optional",
+  "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist",
   "headers": [
     {
@@ -23,4 +23,4 @@
       "destination": "/index.html" 
     }
   ]
-} 
+}
