@@ -13,6 +13,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: process.env.NODE_ENV === 'development',
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-components': ['@headlessui/react', 'framer-motion'],
+          'state-management': ['@reduxjs/toolkit', 'react-redux']
+        }
+      }
+    }
   },
   server: {
     proxy: {
