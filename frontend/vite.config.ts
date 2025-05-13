@@ -15,6 +15,7 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV === 'development',
     chunkSizeWarningLimit: 600,
     rollupOptions: {
+      external: [],
       output: {
         manualChunks: {
           'vendor': ['react', 'react-dom', 'react-router-dom'],
@@ -33,4 +34,15 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    include: [
+      'react', 
+      'react-dom', 
+      'react-router-dom',
+      '@headlessui/react',
+      'framer-motion',
+      '@reduxjs/toolkit',
+      'react-redux'
+    ]
+  }
 })
